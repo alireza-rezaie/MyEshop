@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyEshop.Data;
+using MyEshop.Data.Repositories;
 using MyEshop.Models;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,16 @@ namespace MyEshop.Components
 {
     public class ProductGroupsComponent : ViewComponent
     {
-        MyEshopContext _context;
-        public ProductGroupsComponent(MyEshopContext context)
-        {
-            _context = context;
-        }
+        private IGroupRepository _groupRepository;
 
+        public ProductGroupsComponent(IGroupRepository groupRepository)
+        {
+            _groupRepository = groupRepository;
+        }
         public async Task<IViewComponentResult> InvokeAsync()
         {
             
-            return View("/Views/Components/ProductGroupsComponents.cshtml", categories);
+            return View("/Views/Components/ProductGroupsComponents.cshtml", _groupRepository.GetGroupForShow());
         }
     }
 }
