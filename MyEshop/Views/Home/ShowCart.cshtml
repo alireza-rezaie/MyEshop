@@ -1,0 +1,39 @@
+﻿
+@model CartViewModel
+@{
+    ViewData["Title"] = "سبد خرید";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>عکس محصول</th>
+            <th>کالا</th>
+            <th>تعداد</th>
+            <th>قیمت</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CartItems)
+        {
+            <tr>
+                <td style="vertical-align:middle">
+                    <img style="width:150px!important" src="/images/@(item.Item.Id).jpg" alt="Model.Product.Name"
+                         class="img-thumbnail" />
+                </td>
+                <td style="vertical-align:middle">@item.Item.Product.Name</td>
+                <td style="vertical-align:middle">@item.Quantity</td>
+                <td style="vertical-align:middle">@item.getTotalPrice()</td>
+                <td style="vertical-align:middle">
+                    <a asp-action="RemoveCart" asp-controller="Home" asp-route-itemId="@item.Item.Id">حذف</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+<h5>جمع کل:@Model.OrderTotal</h5>
+
