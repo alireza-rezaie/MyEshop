@@ -19,7 +19,6 @@ namespace MyEshop.Components
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            
             return View("/Views/Components/ProductGroupsComponents.cshtml", _groupRepository.GetGroupForShow());
         }
     }

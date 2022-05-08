@@ -73,3 +73,5 @@ C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcor
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Views\Product\ShowProductByGroupId.cshtml.g.cs
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BoxProduct.cshtml.g.cs
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\MyEshop.csproj.AssemblyReference.cache
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Groups.cshtml.g.cs
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
