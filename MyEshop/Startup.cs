@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -34,8 +35,17 @@ namespace MyEshop
             #endregion
             #region IoC
             services.AddScoped<IGroupRepository, GroupRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             #endregion
-
+            #region Authentication
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(option =>
+                {
+                    option.LoginPath = "/Account/Login";
+                    option.LogoutPath = "/Account/Logout";
+                    option.ExpireTimeSpan = TimeSpan.FromDays(10);
+                });
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +62,7 @@ namespace MyEshop
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
