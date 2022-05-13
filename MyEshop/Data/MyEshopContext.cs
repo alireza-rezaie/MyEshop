@@ -18,6 +18,9 @@ namespace MyEshop.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Order> Order  { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CategoryToProduct>().

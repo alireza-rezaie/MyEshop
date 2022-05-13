@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MyEshop.Data;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MyEshop.Controllers
@@ -15,9 +17,9 @@ namespace MyEshop.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private MyEshopContext _context;
-        private static Cart _cart=new Cart();
+      
 
-        public HomeController(ILogger<HomeController> logger,MyEshopContext context)
+        public HomeController(ILogger<HomeController> logger, MyEshopContext context)
         {
             _logger = logger;
             _context = context;
@@ -27,8 +29,8 @@ namespace MyEshop.Controllers
         {
             var product = _context.Products
                   .Include(p => p.Item)
-                  .SingleOrDefault(p=>p.Id==id);
-            if (product==null)
+                  .SingleOrDefault(p => p.Id == id);
+            if (product == null)
             {
                 return NotFound();
             }
@@ -45,36 +47,85 @@ namespace MyEshop.Controllers
             };
             return View(vm);
         }
+        [Authorize]
         public IActionResult AddToCart(int itemId)
         {
             var product = _context.Products
-                .Include(p=>p.Item)
+                .Include(p => p.Item)
                 .SingleOrDefault(p => p.ItemId == itemId);
             if (product != null)
             {
-                var cartItem = new CartItem()
+                int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
+                var order = _context.Order.FirstOrDefault(o => o.UserId == userId && !o.IsFinaly);
+                if (order != null)
                 {
-                    Item = product.Item,
-                    Quantity=1
-                };
-                _cart.addItem(cartItem);
+                    var OrderaDetail = _context.OrderDetails
+                        .FirstOrDefault(d => d.OrderId == order.OrderId && d.ProductId == product.Id);
+                    if (OrderaDetail!=null)
+                    {
+                        OrderaDetail.Count += 1;
+                    }
+                    else
+                    {
+                        _context.OrderDetails.Add(new OrderDetail()
+                        {
+                            OrderId = order.OrderId,
+                            ProductId = product.Id,
+                            Price = product.Item.Price,
+                            Count = 1
+                        });
+                    }
+                }
+                else
+                {
+                    order = new Order()
+                    {
+                        IsFinaly = false,
+                        CreatDate = DateTime.Now,
+                        UserId = userId,
+                    };
+                    _context.Order.Add(order);
+                    _context.SaveChanges();
 
+                    _context.OrderDetails.Add(new OrderDetail()
+                    {
+                        OrderId = order.OrderId,
+                        ProductId = product.Id,
+                        Price = product.Item.Price,
+                        Count = 1
+                    });
+                }
+                _context.SaveChanges();
             }
             return RedirectToAction("ShowCart");
         }
-        public IActionResult RemoveCart(int itemId)
+        [Authorize]
+        public IActionResult RemoveCart(int DetailId)
         {
-            _cart.removeItem(itemId);
+            var orderdetails = _context.OrderDetails.Find(DetailId);
+            //if (orderdetails.Count>1)
+            //{
+            //    orderdetails.Count -= 1;
+            //}
+            //else
+            //{
+            //    _context.Remove(orderdetails);
+            //}
+            _context.Remove(orderdetails);
+            _context.SaveChanges();
+
             return RedirectToAction("ShowCart");
         }
+        [Authorize]
         public IActionResult ShowCart()
         {
-            var CartVM = new CartViewModel()
-            {
-                CartItems = _cart.CartItems,
-                OrderTotal = _cart.CartItems.Sum(c => c.getTotalPrice())
-            };
-            return View(CartVM);
+            int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
+            var order = _context.Order.Where(o => o.UserId == userId&&!o.IsFinaly)
+                .Include(o => o.OrderDetails)
+                .ThenInclude(c => c.Product)
+                .SingleOrDefault();
+
+            return View(order);
         }
         public IActionResult Index()
         {

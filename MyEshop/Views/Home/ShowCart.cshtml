@@ -1,39 +1,46 @@
 ﻿
-@model CartViewModel
+@model Order
 @{
     ViewData["Title"] = "سبد خرید";
 }
 <h1>@ViewData["Title"]</h1>
 
-<table class="table table-striped">
-    <thead class="thead-dark">
-        <tr>
-            <th>عکس محصول</th>
-            <th>کالا</th>
-            <th>تعداد</th>
-            <th>قیمت</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.CartItems)
-        {
+@if (Model != null)
+{
+    <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
-                <td style="vertical-align:middle">
-                    <img style="width:150px!important" src="/images/@(item.Item.Id).jpg" alt="Model.Product.Name"
-                         class="img-thumbnail" />
-                </td>
-                <td style="vertical-align:middle">@item.Item.Product.Name</td>
-                <td style="vertical-align:middle">@item.Quantity</td>
-                <td style="vertical-align:middle">@item.getTotalPrice()</td>
-                <td style="vertical-align:middle">
-                    <a asp-action="RemoveCart" asp-controller="Home" asp-route-itemId="@item.Item.Id">حذف</a>
-                </td>
+                <th>عکس محصول</th>
+                <th>کالا</th>
+                <th>تعداد</th>
+                <th>قیمت</th>
+                <th></th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td style="vertical-align:middle">
+                        <img style="width:150px!important" src="/images/@(item.Product.Id).jpg" alt="Model.Product.Name"
+                             class="img-thumbnail" />
+                    </td>
+                    <td style="vertical-align:middle">@item.Product.Name</td>
+                    <td style="vertical-align:middle">@item.Count</td>
+                    <td style="vertical-align:middle">@(item.Price * item.Count)</td>
+                    <td style="vertical-align:middle">
+                        <a asp-action="RemoveCart" asp-controller="Home" asp-route-DetailId="@item.DetailId">حذف</a>
+                    </td>
+                </tr>
 
-        }
-    </tbody>
+            }
+        </tbody>
 
-</table>
-<h5>جمع کل:@Model.OrderTotal</h5>
+    </table>
+    <h5>جمع کل:@Model.OrderDetails.Sum(s=>s.Price*s.Count)</h5>
+}
+else
+{
+    <div class="alert alert-danger">فاکتوری نیست</div>
+}
 

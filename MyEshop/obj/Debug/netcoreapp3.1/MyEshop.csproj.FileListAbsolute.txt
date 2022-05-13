@@ -150,3 +150,7 @@ C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcor
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Views\Account\SuccsessRegister.cshtml.g.cs
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Index.cshtml.g.cs
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\_ViewImports.cshtml.g.cs
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\_ViewStart.cshtml.g.cs
