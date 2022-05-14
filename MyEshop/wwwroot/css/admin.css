@@ -61,3 +61,42 @@ main {
     width: calc(100vw - 200px);
     padding: 50px;
 }
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #707070;
+    padding: 12px;
+}
+td{
+    text-align:center;
+}
+td img{
+    border : 1px solid black;
+    padding:3px;
+}
+
+tr:nth-child(odd) {
+    background-color: #eeeeee;
+}
+.btn{
+    background-color:deepskyblue;
+    border-radius:15px;
+    padding:10px 40px;
+    margin:0 30px;
+    color:white;
+    text-decoration:none;
+}
+.btn-add{
+    margin:20px;
+}
+
+
+
+
+

@@ -154,3 +154,4 @@ C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcor
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Index.cshtml.g.cs
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\_ViewImports.cshtml.g.cs
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\_ViewStart.cshtml.g.cs
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Add.cshtml.g.cs

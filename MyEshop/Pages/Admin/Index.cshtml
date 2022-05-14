@@ -3,4 +3,36 @@
 @{
     ViewData["Title"] = "Index";
 }
-<h1>admin</h1>
+<h1>لیست کالا ها</h1>
+<hr />
+<p class="btn-add">
+    <a class="btn" asp-page="Add">افزودن</a>
+</p>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>تصویر</th>
+            <th>نام</th>
+            <th>قیمت</th>
+            <th>دستورات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td style="vertical-align:middle">
+                    <img style="width:150px!important" src="/images/@(item.Id).jpg" alt="product picture"
+                         class="img-thumbnail" />
+                </td>
+                <td style="vertical-align:middle">@item.Name</td>
+                <td style="vertical-align:middle">@item.Item.Price</td>
+                <td style="vertical-align:middle">
+                    <a href="#">ویرایش</a>
+                    <a href="#">حذف</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    </table>
