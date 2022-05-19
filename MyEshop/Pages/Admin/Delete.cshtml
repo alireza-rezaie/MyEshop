@@ -2,3 +2,30 @@
 @model MyEshop.Pages.Admin.DeleteModel
 @{
 }
+<h1>حذف کالا</h1>
+<form method="post">
+    <dl class="dl-horizontal">
+        <dt> <label asp-for="Product.Name"></label></dt>
+        <dd>
+            <input class="form-control" asp-for="Product.Name" readonly />
+            <span asp-validation-for="Product.Name"></span>
+        </dd>
+
+        <dt> <label asp-for="Product.Description"></label></dt>
+        <dd>
+            <textarea class="form-control" asp-for="Product.Description" readonly></textarea>
+            <span asp-validation-for="Product.Description"></span>
+        </dd>
+
+        <dt> <label>تصویر</label></dt>
+        <dd>
+            <img src="/images/@(Model.Product.Id).jpg" alt="Alternate Text" style="max-width:200px" />
+        </dd>
+
+        <dt></dt>
+        <dd>
+            <input type="hidden" asp-for="Product.Id" />
+            <input class="btn btn-danger" type="submit" name="name" value="حذف" />
+        </dd>
+    </dl>
+</form>
