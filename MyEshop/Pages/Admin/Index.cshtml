@@ -6,7 +6,7 @@
 <h1>لیست کالا ها</h1>
 <hr />
 <p class="btn-add">
-    <a class="btn" asp-page="Add">افزودن</a>
+    <a class="btn btn-primary" asp-page="Add">افزودن</a>
 </p>
 <table class="table table-striped">
     <thead class="thead-dark">
@@ -28,8 +28,8 @@
                 <td style="vertical-align:middle">@item.Name</td>
                 <td style="vertical-align:middle">@item.Item.Price</td>
                 <td style="vertical-align:middle">
-                    <a href="#">ویرایش</a>
-                    <a href="#">حذف</a>
+                    <a asp-page="Edite" asp-route-id="@item.Id">ویرایش</a>
+                    <a asp-page="Delete" asp-route-id="@item.Id">حذف</a>
                 </td>
             </tr>
         }

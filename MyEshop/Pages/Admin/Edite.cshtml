@@ -1,12 +1,13 @@
 ﻿@page
-@model MyEshop.Pages.Admin.AddModel
+@model MyEshop.Pages.Admin.EditeModel
 @{
-    ViewData["Title"] = "افزودن";
+    ViewData["Title"] = "ویرایش";
 }
-<h1>افزودن کالا</h1>
+<h1>ویرایش کالا</h1>
 <hr />
 <section class="d-flex justify-content-center align-items-center">
     <form class="w-50" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Product.Id"/>
         <dl class="dl-horizontal">
             <dt> <label asp-for="Product.Name"></label></dt>
             <dd>
@@ -43,6 +44,6 @@
                 <input class="btn btn-primary btn-submit" type="submit" name="name" value="ثبت" />
             </dd>
         </dl>
-  
+
     </form>
 </section>

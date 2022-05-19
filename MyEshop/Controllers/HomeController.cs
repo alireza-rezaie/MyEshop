@@ -63,6 +63,7 @@ namespace MyEshop.Controllers
                         .FirstOrDefault(d => d.OrderId == order.OrderId && d.ProductId == product.Id);
                     if (OrderaDetail!=null)
                     {
+                        //product.Item.QuantityInStock
                         OrderaDetail.Count += 1;
                     }
                     else

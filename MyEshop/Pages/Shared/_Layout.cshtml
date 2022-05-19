@@ -4,21 +4,23 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/css/admin.css" rel="stylesheet" />
+    <link href="~/css/adminStyle.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-rtl.css" rel="stylesheet" />
+    <link href="https://cdn.rawgit.com/rastikerdar/sahel-font/v1.0.0-alpha23/dist/font-face.css" rel="stylesheet" type="text/css" />
 </head>
 <body dir="rtl">
     <header>
         <a href="/">Admin</a>
     </header>
-    <div class="container">
-        <nav>
+    <div class="row m-0">
+        <nav class="col-md-2">
             <ul>
                 <li>
                     <a class="nav-item" href="#">Home</a>
                 </li>
             </ul>
         </nav>
-        <main>
+        <main class="col-md-10">
             @RenderBody()
         </main>
        
