@@ -13,21 +13,21 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 1 "C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\Pages\Admin\_ViewImports.cshtml"
+#line 1 "C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\Pages\_ViewImports.cshtml"
 using MyEshop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\Pages\Admin\_ViewImports.cshtml"
+#line 2 "C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\Pages\_ViewImports.cshtml"
 using MyEshop.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5e26d246b2ead17080d50a653f32bd2b0fe01130", @"/Pages/Admin/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7a8216f524d7ee13ea87b096575790f2a3183837", @"/Pages/Admin/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7a8216f524d7ee13ea87b096575790f2a3183837", @"/Pages/_ViewImports.cshtml")]
     #nullable restore
     public class Pages_Admin_Index : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     #nullable disable
@@ -69,7 +69,7 @@ using MyEshop.Models;
 #line hidden
 #nullable disable
             WriteLiteral("<h1>لیست کالا ها</h1>\r\n<hr />\r\n<p class=\"btn-add\">\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e26d246b2ead17080d50a653f32bd2b0fe011304666", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e26d246b2ead17080d50a653f32bd2b0fe011304648", async() => {
                 WriteLiteral("افزودن");
             }
             );
@@ -123,7 +123,7 @@ WriteAttributeValue("", 635, item.Id, 635, 10, false);
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                <td style=\"vertical-align:middle\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e26d246b2ead17080d50a653f32bd2b0fe011307899", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e26d246b2ead17080d50a653f32bd2b0fe011307881", async() => {
                 WriteLiteral("ویرایش");
             }
             );
@@ -154,7 +154,7 @@ WriteAttributeValue("", 635, item.Id, 635, 10, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e26d246b2ead17080d50a653f32bd2b0fe0113010078", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e26d246b2ead17080d50a653f32bd2b0fe0113010060", async() => {
                 WriteLiteral("حذف");
             }
             );
