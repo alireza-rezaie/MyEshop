@@ -18,8 +18,23 @@
         }
     </dl>
     <div>
-        <a class="btn btn-primary" asp-controller="Home" asp-action="AddToCart"
+        <a class="btn btn-primary brn2" asp-controller="Home" asp-action="AddToCart"
            asp-route-itemId="@Model.Product.ItemId">افزودن به سبد خرید</a>
+        @*@if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-primary brn2" asp-controller="Home" asp-action="AddToCart"
+               asp-route-itemId="@Model.Product.ItemId">افزودن به سبد خرید</a>
+        }
+        else
+        {
+            <a onclick="sayEror()" class="btn btn-primary" style="color:white">افزودن به سبد خرید</a>
+        }*@
+
     </div>
 </div>
+<script>
+    //function sayEror() {
+    //    alert("vared site shavid");
+    //}
+</script>
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -60,11 +61,30 @@ namespace MyEshop
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseStaticFiles();
 
+            app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path.StartsWithSegments("/Admin"))
+                {
+                    if (!context.User.Identity.IsAuthenticated)
+                    {
+                        context.Response.Redirect("/Account/Login");
+                    }
+                    else if (!bool.Parse(context.User.FindFirstValue("IsAdmin")))
+                    {
+                        context.Response.Redirect("/Account/Login");
+                    }
+                }
+                    await next.Invoke();
+              
+            }
+            );
+
+
 
             app.UseEndpoints(endpoints =>
             {
@@ -73,6 +93,7 @@ namespace MyEshop
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            
         }
     }
 }

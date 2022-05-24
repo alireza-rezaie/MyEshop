@@ -45,6 +45,15 @@ namespace MyEshop.Controllers
             _UserRepository.AddUser(user);
             return View("SuccsessRegister", register);
         }
+        //public IActionResult VerifyEmail(string email)
+        //{
+        //    if (_UserRepository.IsExitsUserByEmail(email.ToLower()))
+        //    {
+        //        return Json($"ایمیل {email} تکراری است");
+
+        //    }
+        //    return Json("True");
+        //}
         #endregion
         #region Login
         public IActionResult Login()
@@ -71,6 +80,7 @@ namespace MyEshop.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.Email),
+                new Claim("IsAdmin", user.IsAdmin.ToString()),
                // new Claim("CodeMeli", user.Email),
 
             };
