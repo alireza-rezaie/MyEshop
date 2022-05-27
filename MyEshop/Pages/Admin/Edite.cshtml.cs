@@ -20,6 +20,9 @@ namespace MyEshop.Pages.Admin
         }
         [BindProperty]
         public AddEditeProductViewModel Product { get; set; }
+        [BindProperty]
+        public List<int> SelectedGroups { get; set; }
+        public List<int> GroupProduct { get; set; }
         public void OnGet(int id)
         {
             var product = _context.Products
@@ -34,6 +37,10 @@ namespace MyEshop.Pages.Admin
                     Price = s.Item.Price
                 }).FirstOrDefault();
             Product = product;
+
+            Product.Categories = _context.Categories.ToList();
+            GroupProduct = _context.CategoryToProducts.Where(c => c.ProductId == id)
+                .Select(s => s.CategoryId).ToList();
         }
         public IActionResult OnPost()
         {
@@ -59,6 +66,22 @@ namespace MyEshop.Pages.Admin
                 {
                     Product.Picture.CopyTo(stream);
                 }
+            }
+            //delete all CategoryToProducts
+            _context.CategoryToProducts.Where(c => c.ProductId == product.Id).ToList()
+                .ForEach(g => _context.CategoryToProducts.Remove(g));
+            
+            if (SelectedGroups.Any() && SelectedGroups.Count > 0)
+            {
+                foreach (int gr in SelectedGroups)
+                {
+                    _context.CategoryToProducts.Add(new CategoryToProduct()
+                    {
+                        CategoryId = gr,
+                        ProductId = Product.Id
+                    });
+                }
+                _context.SaveChanges();
             }
 
             return RedirectToPage("Index");

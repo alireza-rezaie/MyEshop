@@ -19,8 +19,15 @@ namespace MyEshop.Pages.Admin
         }
         [BindProperty]
         public AddEditeProductViewModel Product { get; set; }
+        [BindProperty]
+
+        public List<int> SelectedGroups { get; set; }
         public void OnGet()
         {
+            Product = new AddEditeProductViewModel()
+            {
+                Categories = _context.Categories.ToList()
+            };
         }
         public IActionResult OnPost()
         {
@@ -58,6 +65,18 @@ namespace MyEshop.Pages.Admin
                 {
                     Product.Picture.CopyTo(stream);
                 }
+            }
+            if (SelectedGroups.Any() && SelectedGroups.Count > 0)
+            {
+                foreach (int gr in SelectedGroups)
+                {
+                    _context.CategoryToProducts.Add(new CategoryToProduct()
+                    {
+                        CategoryId=gr,
+                        ProductId=pro.Id
+                    });
+                }
+                _context.SaveChanges();
             }
             return RedirectToPage("Index");
         }
