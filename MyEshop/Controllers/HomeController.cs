@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using ZarinpalSandbox;
 
 namespace MyEshop.Controllers
 {
@@ -17,7 +18,7 @@ namespace MyEshop.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private MyEshopContext _context;
-      
+
 
         public HomeController(ILogger<HomeController> logger, MyEshopContext context)
         {
@@ -61,7 +62,7 @@ namespace MyEshop.Controllers
                 {
                     var OrderaDetail = _context.OrderDetails
                         .FirstOrDefault(d => d.OrderId == order.OrderId && d.ProductId == product.Id);
-                    if (OrderaDetail!=null)
+                    if (OrderaDetail != null)
                     {
                         //product.Item.QuantityInStock
                         OrderaDetail.Count += 1;
@@ -121,7 +122,7 @@ namespace MyEshop.Controllers
         public IActionResult ShowCart()
         {
             int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier).ToString());
-            var order = _context.Order.Where(o => o.UserId == userId&&!o.IsFinaly)
+            var order = _context.Order.Where(o => o.UserId == userId && !o.IsFinaly)
                 .Include(o => o.OrderDetails)
                 .ThenInclude(c => c.Product)
                 .SingleOrDefault();
@@ -134,11 +135,69 @@ namespace MyEshop.Controllers
                 .ToList();
             return View(products);
         }
+        [Authorize]
+        public IActionResult Payment()
+        {
+            int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var order = _context.Order
+                .Include(o => o.OrderDetails)
+                .FirstOrDefault(o => o.UserId == userId && !o.IsFinaly);
+            if (order == null)
+            {
+
+                return NotFound();
+
+            }
+
+            var payment = new Payment((int)order.OrderDetails.Sum(d => d.Price * d.Count));
+
+            var res = payment.PaymentRequest($"پرداخت فاکتور شماره {order.OrderId}",
+                "http://localhost:1635/Home/OnlinePayment/" + order.OrderId, "alireza3356864@gmail.com", "09383356867");
+            if (res.Result.Status == 100)
+            {
+                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+
+            return View();
+        }
+        public IActionResult OnlinePayment(int id)
+        {
+            if (HttpContext.Request.Query["Status"] != "" &&
+                HttpContext.Request.Query["Status"].ToString().ToLower() == "ok" &&
+                HttpContext.Request.Query["Authority"] != "")
+            {
+                string authority = HttpContext.Request.Query["Authority"].ToString();
+                var order = _context.Order.Include(o => o.OrderDetails)
+                    .FirstOrDefault(o => o.OrderId == id);
+                var payment = new Payment((int)order.OrderDetails.Sum(d => d.Price * d.Count));
+                var res = payment.Verification(authority).Result;
+                if (res.Status == 100)
+                {
+                    order.IsFinaly = true;
+                    _context.Order.Update(order);
+                    _context.SaveChanges();
+                    ViewBag.code = res.RefId;
+                    return View();
+                }
+            }
+
+            return View();
+        }
+
+
+
+
         [Route("ContactUs")]
         public IActionResult ContactUs()
         {
             return View();
         }
+
 
         public IActionResult PriCvacy()
         {

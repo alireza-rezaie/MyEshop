@@ -73,6 +73,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.5, )"
+            },
+            "ZarinPalSandbox": {
+              "target": "Package",
+              "version": "[2.0.4, )"
             }
           },
           "imports": [

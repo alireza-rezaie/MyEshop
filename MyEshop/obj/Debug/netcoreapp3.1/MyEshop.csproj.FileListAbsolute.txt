@@ -163,3 +163,14 @@ C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcor
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
 C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\obj\Debug\netcoreapp3.1\Razor\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\Microsoft.VisualBasic.dll
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\ZarinpalSandbox.dll
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\runtimes\debian-x64\native\libuv.so
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\runtimes\fedora-x64\native\libuv.so
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\runtimes\opensuse-x64\native\libuv.so
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\runtimes\osx\native\libuv.dylib
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\runtimes\rhel-x64\native\libuv.so
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\runtimes\win7-arm\native\libuv.dll
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\runtimes\win7-x64\native\libuv.dll
+C:\Users\alireza\Desktop\AspDotNetMadenyProject\MyEshop\MyEshop\bin\Debug\netcoreapp3.1\runtimes\win7-x86\native\libuv.dll
